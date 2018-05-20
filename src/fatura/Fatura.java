@@ -6,6 +6,8 @@ package fatura;
  * @author rodolfo
  */
 
+import java.util.Scanner;
+
 public class Fatura {
     private String numero,descricao;
     private double preco;
@@ -58,5 +60,32 @@ public class Fatura {
     
     public double getInvoiceAmount(){
         return this.item * this.preco;
+    }
+    
+    public void perguntas(){
+        Scanner input = new Scanner(System.in);
+        
+        System.out.print("Digite numero: ");
+        String n = input.nextLine();
+        setNumero(n);
+        
+        System.out.print("Digite descrição: ");
+        String d = input.nextLine();
+        setDescricao(d);
+        
+        System.out.print("Digite preço: ");
+        double p = input.nextDouble();
+        setPreco(p);
+        
+        System.out.print("Digite quantidade: ");
+        int q = input.nextInt();
+        setItem(q);
+    }
+    
+    public void respostas(){
+        System.out.printf("Numero:%s Descrição:%s Quantidade:%d Preço:R$%.2f "
+                + "Valor:R$%.2f%n",
+                getNumero(),getDescricao(),getItem(),getPreco(),
+                getInvoiceAmount());
     }
 }
